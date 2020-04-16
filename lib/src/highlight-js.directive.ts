@@ -11,8 +11,9 @@ import {
 import { DOCUMENT } from '@angular/common';
 import { NgModel } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { HLJS } from './highlight-js.module';
 
-declare const hljs: any;
+// declare const hljs: any;
 
 @Directive({
   selector: '[highlight-js]',
@@ -34,7 +35,8 @@ export class HighlightJsDirective implements OnInit, AfterViewInit, OnDestroy {
     private el: ElementRef<HTMLElement>,
     @Optional() private ngModel: NgModel,
     @Inject(DOCUMENT) private doc: any,
-  ) {}
+    @Inject(HLJS) private hljs: any,
+  ) { }
 
   private escapeHTML(str: string): string {
     return (str || '')
@@ -56,8 +58,8 @@ export class HighlightJsDirective implements OnInit, AfterViewInit, OnDestroy {
     this.parentEl = this.el.nativeElement.parentNode as HTMLElement;
     this.parentEl.insertBefore(this.codeEl, this.el.nativeElement.nextSibling);
 
-    hljs.configure(Object.assign({}, this.options));
-    hljs.highlightBlock(this.codeEl);
+    this.hljs.configure(Object.assign({}, this.options));
+    this.hljs.highlightBlock(this.codeEl);
   }
 
   private destroy() {

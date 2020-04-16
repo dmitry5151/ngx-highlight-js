@@ -1,10 +1,10 @@
 {
-  "name": "ngx-highlight-js",
+  "name": "ngx-highlight-js-fork",
   "version": "9.0.0",
   "description": "Angular for syntax highlighting with highlight.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cipchk/ngx-highlight-js.git"
+    "url": "git+https://github.com:dmitry5151/ngx-highlight-js.git"
   },
   "keywords": [
     "highlight",
@@ -67,6 +67,12 @@
     "lib": {
       "entryFile": "lib/index.ts"
     },
-    "dest": "./publish"
+    "dest": "./publish",
+    "whitelistedNonPeerDependencies": [
+      "highlight.js"
+    ]
+  },
+  "dependencies": {
+    "highlight.js": "^9.18.1"
   }
 }
